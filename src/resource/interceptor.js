@@ -99,6 +99,19 @@ export function responseInterceptor (response) {
   return response.data;
 }
 */
+export function responsetReportInterceptor (response) {
+  const url = response.config.url;
+  if (url.indexOf('/report/') > -1 || url.indexOf('/dmareport/') > -1) {
+    let str = JSON.stringify(response.data);
+    str = str.replace(/:-\d+\.?\d*/g, ':"--"').replace(/null/g, '"--"');
+    try {
+      response.data = JSON.parse(str)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  return response;
+}
 export function responseErrorInterceptor (error) {
   return Promise.reject(error);
 }

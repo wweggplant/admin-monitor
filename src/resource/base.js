@@ -5,7 +5,7 @@
  */
 import Qs from 'qs';
 import VAR from '@/const/common';
-import {responseInterceptor, responseErrorInterceptor, requestFormInterceptor} from './interceptor';
+import {responsetReportInterceptor, responseErrorInterceptor, requestFormInterceptor} from './interceptor';
 
 let getBaseConfig = (config = {}) => {
   return Object.assign({
@@ -18,7 +18,7 @@ const base = axios.create(getBaseConfig({
     return Qs.stringify(params, { indices: false })
   },
 }));
-base.interceptors.response.use(responseInterceptor, responseErrorInterceptor);
+base.interceptors.response.use(responsetReportInterceptor, responseErrorInterceptor);
 base.interceptors.request.use(requestFormInterceptor, responseErrorInterceptor);
 
 export {base}
