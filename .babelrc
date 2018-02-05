@@ -1,0 +1,11 @@
+{
+    "presets": [
+        ["@babel/preset-env",{
+            "targets":{
+                "browsers": ["since 2013"]
+            },
+            "useBuiltIns": "usage"
+        }]
+    ],
+    "plugins": ["transform-vue-jsx","transform-async-to-generator"]
+}
