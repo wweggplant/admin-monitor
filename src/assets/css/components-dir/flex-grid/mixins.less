@@ -1,0 +1,140 @@
+
+//基础类
+.grid-basic() {
+    display:flex;
+    //方向
+    &.direction-row{
+        flex-flow:row;
+    }
+    &.direction-row-reverse{
+        flex-flow:row-reverse;
+    }
+    &.direction-column{
+        flex-flow:column;
+    }
+    &.direction-column-reverse{
+        flex-flow:column-reverse;
+    }
+    // 换行
+    &.wrap{
+        flex-wrap:wrap;
+    }
+    &.no-wrap{
+        flex-wrap:nowrap;
+    }
+    &.wrap-reverse{
+        flex-wrap:wrap-reverse;
+    }
+    //主轴对齐
+    &.jt-start {
+        justify-content: flex-start;
+    }
+    &.jt-around {
+        justify-content: space-around;
+    }
+    &.jt-center{
+        justify-content:center;
+    }
+    &.jt-between {
+        justify-content: space-between;
+
+    }
+    &.jt-around {
+        justify-content: space-around;
+    }
+    &.jt-end {
+        justify-content: flex-end;
+    }
+    //交叉轴线
+    &.al-start{
+        align-items:flex-start;
+    }
+    &.al-end{
+        align-items:flex-end;
+    }
+    &.al-center{
+        align-items:center;
+    }
+    &.al-baseline{
+        align-items:baseline;
+    }
+    &.al-stretch{
+        align-items:stretch;
+    }
+    //多根轴线
+    &.muti-al-start{
+        align-content:flex-start;
+    }
+    &.muti-al-end{
+        align-content:flex-end;
+    }
+    &.muti-al-center{
+       align-content:center;
+    }
+    &.muti-al-between{
+        align-content:space-between;
+    }
+    &.muti-al-around{
+       align-content:space-around;
+    }
+    &.muti-al-stretch{
+        align-content:stretch;
+    }
+
+    //对齐
+    .cell-align-start{
+        align-self:flex-start;
+    }
+    .cell-align-end{
+        align-self:flex-end;
+    }
+    .cell-align-center{
+        align-self:center;
+    }
+    .cell-align-baseline{
+        align-self:baseline;
+    }
+    .cell-align-stretch{
+        align-self:stretch;
+    }
+}
+
+//特有的布局
+.grid-layout() {
+     //平均分配
+    &.cell-avg>.flex-cell{
+        flex:auto;
+    }
+    //不放大也不缩小
+    &.cell-none>.flex-cell{
+        flex:none;
+    }
+     //顺序
+    .cell-first{
+        order:-99;
+    }
+    //特殊布局
+    &.vertical-center{
+        justify-content:center;
+        align-items:center;
+    }
+    &.corner{
+        justify-content:space-between;
+        &>.flex-cell{
+            flex-flow:column;
+            justify-content:space-between;
+        }
+    }
+    &.vertical-between{
+        flex-flow:column;
+        justify-content:space-between;
+    }
+    &.footer-end{
+        display: flex;
+        min-height: 100vh;
+        flex-flow: column nowrap;
+        & .flex-body{
+            flex:auto;
+        }
+    }
+}

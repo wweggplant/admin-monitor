@@ -1,0 +1,15 @@
+.grid-responsive(@breakpoint) {
+    @media (max-width: @breakpoint) {
+        flex-direction: column;
+        &.vertical-center {
+            flex-direction: row;
+        }
+        &.corner{
+            align-items:space-between;
+            &>.flex-cell{
+                flex-flow:row;
+                align-items:space-between;
+            }
+        }
+    }
+}

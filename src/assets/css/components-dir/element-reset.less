@@ -1,0 +1,49 @@
+.el-message.el-message--error{
+    top:45%;
+}
+.el-form-item--mini.el-form-item {
+    margin-bottom: 9px;
+}
+.el-table--mini th, .el-table--mini td {
+    padding: 2px 0;
+}
+.el-tag--mini{
+    line-height: 20px;
+}
+.current-highlight(@background-color:@highlight-color,@color:@white-color) {
+    background: @background-color;
+    color: @color;
+}
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+    .current-highlight();
+}
+.el-table__body tr.current-row > td,
+.el-table--striped .el-table__body tr.el-table__row--striped.current-row td,
+.el-table__row .current-row:hover,
+.el-table--enable-row-hover .el-table__body tr:hover > td{
+    .current-highlight();
+}
+.el-table--enable-row-hover .el-table__body tr:hover > td{
+    .current-highlight();
+}
+.el-table__header-wrapper{
+    .el-table__header{
+        tr{
+            &:hover{
+                color:inherit;
+                background-color:inherit;
+            }
+        }
+    }
+}
+.el-table tr:hover {
+    .current-highlight();
+}
+
+.el-submenu__title i ,
+.el-menu-item i{
+    color: inherit;
+}
+.el-submenu .el-menu-item {
+  min-width: inherit;
+}

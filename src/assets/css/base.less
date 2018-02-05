@@ -1,0 +1,172 @@
+@import "common.less";
+@import "./components-dir/flex-grid/flex-grid.less";
+/**{
+    box-sizing: border-box;
+}*/
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+.overflow-y-hidden{
+    overflow-y: hidden !important;
+}
+.overflow-x-hidden{
+    overflow-x: hidden !important;
+}
+.text-center{
+    text-align: center;
+}
+.u-container{
+    padding: 10px;
+}
+.u-tag{
+    margin:0 5px;
+    &:first-child{
+        margin-left: 0;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+}
+.full-height{
+    height: 100%;
+}
+.pull-right{
+    float: right;
+}
+.pull-left{
+    float: left;
+}
+.search-condition{
+    background-color: @background-sub-color;
+    padding: 5px 10px 0 10px;
+}
+.selected-device{
+    width:30em;
+    line-height: 2;
+    height: 2em;
+    padding: 0 .5em;
+    border:1px solid fadeOut(@black-color,50%);
+}
+.chart{
+    padding: 5px;
+    .border-size;
+}
+.report-search-condition{
+    padding-bottom: 5px;
+    div{
+        &:first-child{
+            text-align: right;
+        }
+        &:last-child{
+            text-align: left;
+        }
+    }
+}
+.report-chart-item{
+    border-right:1px dashed @black-color;
+    padding:0 10px;
+    &:last-child{
+        border-right:none;
+    }
+}
+.data-display-layout{
+    .border-size;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-top:1px solid @black-color;
+    .data-display-secition{
+        .border-size;
+        border-bottom: 1px dashed @black-color;
+        padding: 5px;
+        flex:0 0 50%;
+        overflow: hidden;
+        &.single{
+            flex:0 0 100%;
+        }
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+}
+.common-dialog{
+    .el-dialog__body{
+        padding:10px;
+    }
+}
+.chart-title{
+    text-align: center;
+    flex:0 0 20px;
+}
+.chart-body{
+    flex:0 0 calc(~"100% - 20px");
+    overflow: hidden;
+    display: flex;
+    .chart-body-table{
+        flex:1 2 100%;
+    }
+    .chart-body-chart{
+        flex:1 1 100%;
+    }
+}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px fadeOut(@grey-color,10%);
+    background-color: darken(@grey-color,10%);
+}
+
+
+.no-config{
+  height: 2em;
+  color:#c0ccda
+}
+.config-table{
+  height: calc(~'100% - 2em');
+}
+.config-tip{
+  height: 2em;
+  text-align: center;
+  color:#2d2f33e3;
+  line-height: 2;
+  font-size: 14px;
+}
+.table-list{
+  .table-detail-button{
+    &:hover,
+    &:focus,
+    & .current-row
+    {
+      color: @white-color;
+    }
+  }
+  & .current-row .table-detail-button,
+  & .el-table__row:hover .table-detail-button
+  {
+    color: @white-color;
+  }
+}
+
+.pre-color { color:@pre-color; }
+.ins-color { color:@ins-color; }
+.grp-color { color:@grp-color; }
+.acc-color { color:@acc-color; }
+.dma-color { color:@dma-color; }

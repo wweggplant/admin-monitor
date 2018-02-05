@@ -1,0 +1,77 @@
+@import "~assets/css/common.less";
+.device-tree{
+    height: 100%;
+    padding: 0 10px;
+    border-right:1px solid @black-color;
+    .tree-item{
+
+    }
+}
+.device-detail{
+    position: relative;
+    padding: 0 10px;
+}
+.dma-collapse-wrap{
+    height: calc(~"100% - 1em");
+    .dma-collapse{
+        flex:auto;
+    }
+}
+.dma-collapse {
+    overflow-y:auto;
+    overflow-x:hidden;
+    .collapse-title-badge {
+        padding: .5em;
+        background: @red-color;
+        border-radius: 50%;
+        color:@white-color;
+        background: #f50d0d;
+        width: .5em;
+        height: .5em;
+        text-align: left;
+        line-height: .5;
+        margin-top: .5em;
+        margin-right: .5em;
+        font-size: 12px;
+    }
+    .el-collapse-item__header{
+        padding-left:1em;
+        background: @main-color;
+        color:@white-color;
+        height: 30px;
+        line-height: 30px;
+        .el-icon-circle-plus-outline{
+            transform: scale(1.5,1.5);
+        }
+        .el-collapse-item__arrow{
+            line-height: 30px;
+        }
+    }
+    .el-collapse-item__content{
+        padding-bottom: 0px;
+    }
+}
+
+.el-tree-node.is-expanded>.el-tree-node__children {
+    display: inline;
+}
+.el-tree{
+    height: calc(~"100% - 40px");
+    overflow-x: auto;
+}
+.dma-upload-wrap{
+    overflow-x: auto;
+    margin-top: 14px;
+}
+.dma-upload{
+    .el-upload--picture-card{
+        flex:none;
+        margin: 0 8px 8px 0;
+    }
+    .el-upload-list--picture-card {
+        white-space: nowrap;
+    }
+}
+.hidden{
+    display: none;
+}

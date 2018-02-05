@@ -1,0 +1,41 @@
+//禁止flex
+.no-flex .flex-box{
+    display: initial;
+}
+// flex-cell
+.flex-cell{
+    display:initial;
+    &.cell-full{
+        width: 100%;
+        flex:0 0 100%;
+    }
+    &.flex-none{
+        flex:none
+    }
+    &.flex-auto{
+        flex:auto
+    }
+}
+
+/* 参考boostrap */
+.flex-box,
+.flex-box-l,
+.flex-box-m,
+.flex-box-s,
+.flex-box-x{
+    .grid-basic();
+    //大小
+    .grid-layout();
+}
+
+.flex-box-s{
+    .grid-responsive(@breakpoint-small);
+}
+
+
+
+
+
+
+
+
