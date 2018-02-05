@@ -98,6 +98,11 @@ export default new Router({
         }
         */
         {
+          path: '/listChart',
+          meta: {component: 'listChart', name: '图表列表'},
+          component: resolve => require(['@/view/list/listChart'], resolve)
+        },
+        {
           path: '/listByPage',
           meta: {component: 'listByPage', name: '分页列表'},
           component: resolve => require(['@/view/list/index'], resolve)

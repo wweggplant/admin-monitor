@@ -96,9 +96,9 @@ export default {
               name: '分页列表'
             },
             {
-              index: 'reportSummary',
-              route: '/reportSummary',
-              name: '自定义时段汇总'
+              index: 'listChart',
+              route: '/listChart',
+              name: '图表列表'
             },
             {
               index: 'reportDetail',
