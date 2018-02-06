@@ -101,9 +101,9 @@ export default {
               name: '图表列表'
             },
             {
-              index: 'reportDetail',
-              route: '/reportDetail',
-              name: '自定义时段明细'
+              index: 'tableTreeList',
+              route: '/tableTreeList',
+              name: '表格树'
             }
           ]
         },

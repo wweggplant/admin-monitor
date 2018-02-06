@@ -107,6 +107,11 @@ export default new Router({
           meta: {component: 'listByPage', name: '分页列表'},
           component: resolve => require(['@/view/list/index'], resolve)
         },
+        {
+          path: '/tableTreeList',
+          meta: {component: 'tableTreeList', name: '表格树'},
+          component: resolve => require(['@/view/list/tableTreeList'], resolve)
+        },
       ]
     },
     {

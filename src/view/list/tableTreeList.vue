@@ -1,5 +1,5 @@
 <template>
-    <search-chart :use-height='useHeight' ref='searchChart'>
+    <search-chart :use-height='baseOption.useHeight' ref='searchChart'>
         <el-form slot='search' size='mini' class='search-condition' ref='form' :model='form' label-width='80px'>
             <el-row>
                 <el-col :span='7'>
@@ -24,7 +24,7 @@
         </el-form>
         <tree-grid
             slot='table'
-            :height='useHeight/2 - 5'
+            :height='baseOption.useHeight/2 - 5'
             :columns='columns'
             :tree-structure='true'
             :data-source='list'
@@ -50,7 +50,7 @@ import reportResource from '@/resource/report';
 import dmaResource from '@/resource/dma';
 import {format} from '@/filters/date';
 import filters from 'filters';
-import {TreeGrid} from '@/components/common/treeTable'
+import {TreeGrid} from '@/common/treeTable'
 import columns from '@/const/dma/columns';
 
 export default {
@@ -80,8 +80,9 @@ export default {
       let startDate = format(form.dates[0]);
       let endDate = format(form.dates[1]);
       this.queried = false;
-      axios.all([reportResource.getDmaStatSum(startDate, endDate), dmaResource.getDMATree()]).then(([[list], [tree]]) => {
+      axios.all([reportResource.getDmaStatSum(startDate, endDate), dmaResource.getDMATree()]).then(([listResp, treeResp]) => {
         this.queried = true;
+        const {list, tree} = {list: listResp.data, tree: treeResp.data};
         let chartData = [];
         commonLogic.iterTree([tree], (item) => {
           let d = list[item.dmaId];
