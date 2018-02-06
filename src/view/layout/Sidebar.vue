@@ -117,6 +117,11 @@ export default {
           index: 'mapMonitor',
           name: '地图',
         },
+        {
+          icon: 'el-icon-Group iconfont',
+          index: 'treeIndex',
+          name: '树形管理',
+        },
       ]
     }
   },

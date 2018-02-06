@@ -2,7 +2,7 @@ import dma from '@/const/dma';
 import filters from '@/filters/index';
 import deviceOption from '@/const/device';
 import dmaResource from '@/resource/dma';
-import base from '@/extend/base';
+import base from '@/mixin/base';
 import commonLogic from '@/common/';
 import mixins from '@/mixin/device';
 import session from '@/utils/session';
@@ -14,8 +14,7 @@ const EDITE_STATE = {
   EDIT: 3
 };
 const mixin = {
-  extends: base,
-  mixins: [mixins],
+  mixins: [mixins, base],
   data () {
     return {
       showImgPreview: false,
@@ -58,7 +57,7 @@ const mixin = {
     async reload (vm) {
       let first;
       vm.updateLocalDMA();
-      await dmaResource.getDMATree().then(([data]) => {
+      await dmaResource.getDMATree().then(({data}) => {
         data = [data];
         commonLogic.iterTree(data, (item) => {
           item.mode = EDITE_STATE.NONE;

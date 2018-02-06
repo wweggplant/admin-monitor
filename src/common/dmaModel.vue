@@ -48,7 +48,7 @@
 
 <script>
 import commonLogic from '@/common';
-import Tag from '@/components/common/Tag';
+import Tag from '@/common/Tag';
 import dmaResource from '@/resource/dma';
 
 export default {

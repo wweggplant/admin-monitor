@@ -70,10 +70,10 @@
 
 <script>
 import device from '@/mixin/device';
-import model from 'src/mixin/model';
+import model from '@/mixin/model';
 import options from '@/const/device';
 import commonLogic from '@/common';
-import Tag from '@/components/common/Tag';
+import Tag from '@/common/Tag';
 
 export default {
   mixins: [device, model],

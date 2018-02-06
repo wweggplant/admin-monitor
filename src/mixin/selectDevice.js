@@ -1,5 +1,5 @@
-import deviceModel from '@/components/common/DeviceModel';
-import Tag from '@/components/common/Tag';
+import deviceModel from '@/common/DeviceModel';
+import Tag from '@/common/Tag';
 
 export default {
   components: {

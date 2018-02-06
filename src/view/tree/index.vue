@@ -1,5 +1,5 @@
 <template>
-    <el-row class='u-container' :style='{height:`${useHeight}px`}'>
+    <el-row class='u-container' :style='{height:`${baseOption.useHeight}px`}'>
         <el-col class='device-tree' :span='5'>
             <el-tree
                 :expand-on-click-node='false'
@@ -155,13 +155,13 @@
 
 <script>
 import dmaResource from '@/resource/dma';
-import deviceModel from '@/components/common/DeviceModel';
+import deviceModel from '@/common/DeviceModel';
 import filters from '@/filters/index';
 import {mixin, EDITE_STATE} from '@/mixin/dma';
 import dmaDevice from './components/dmaDevice';
 
 export default {
-  name: 'DMAManage',
+  name: 'treeIndex',
   mixins: [mixin],
   components: {
     deviceModel,

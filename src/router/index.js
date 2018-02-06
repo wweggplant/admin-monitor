@@ -112,6 +112,11 @@ export default new Router({
           meta: {component: 'tableTreeList', name: '表格树'},
           component: resolve => require(['@/view/list/tableTreeList'], resolve)
         },
+        {
+          path: '/treeIndex',
+          meta: {component: 'treeIndex', name: '树形管理'},
+          component: resolve => require(['@/view/tree/index'], resolve)
+        },
       ]
     },
     {

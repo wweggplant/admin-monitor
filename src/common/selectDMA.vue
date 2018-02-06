@@ -11,7 +11,7 @@
 </template>
 <script>
 import dmaModel from '@/components/common/dmaModel';
-import Tag from '@/components/common/Tag';
+import Tag from '@/common/Tag';
 
 export default {
   components: {
