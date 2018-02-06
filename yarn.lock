@@ -1205,6 +1205,28 @@ bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.4.7:
   version "3.5.1"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
+bmaplib.curveline@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/bmaplib.curveline/download/bmaplib.curveline-1.0.0.tgz#826eb0bf1c59fad1b23142be66fc360cf009aea2"
+
+bmaplib.heatmap@^1.0.4:
+  version "1.0.4"
+  resolved "http://registry.npm.taobao.org/bmaplib.heatmap/download/bmaplib.heatmap-1.0.4.tgz#30161262771fe78af35705ff92457725de5d9850"
+
+bmaplib.lushu@^1.0.7:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/bmaplib.lushu/download/bmaplib.lushu-1.0.7.tgz#77c17dcf7148d30c46e8430c7ff86b20e418b8b8"
+
+bmaplib.markerclusterer@^1.0.13:
+  version "1.0.13"
+  resolved "http://registry.npm.taobao.org/bmaplib.markerclusterer/download/bmaplib.markerclusterer-1.0.13.tgz#442d71a6c40844ee47d01f6db2166b54530b5bd1"
+  dependencies:
+    bmaplib.texticonoverlay "^1.0.2"
+
+bmaplib.texticonoverlay@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/bmaplib.texticonoverlay/download/bmaplib.texticonoverlay-1.0.2.tgz#d78546ea0f036d9fe964983796315b6c112a05bf"
+
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "http://registry.npm.taobao.org/bn.js/download/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -3174,6 +3196,12 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+linkify-it@^2.0.0:
+  version "2.0.3"
+  resolved "http://registry.npm.taobao.org/linkify-it/download/linkify-it-2.0.3.tgz#d94a4648f9b1c179d64fa97291268bdb6ce9434f"
+  dependencies:
+    uc.micro "^1.0.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/load-json-file/download/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -3291,6 +3319,16 @@ make-dir@^1.0.0:
   dependencies:
     pify "^3.0.0"
 
+markdown-it@^8.4.0:
+  version "8.4.0"
+  resolved "http://registry.npm.taobao.org/markdown-it/download/markdown-it-8.4.0.tgz#e2400881bf171f7018ed1bd9da441dac8af6306d"
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.3"
+
 marked@*:
   version "0.3.12"
   resolved "http://registry.npm.taobao.org/marked/download/marked-0.3.12.tgz#7cf25ff2252632f3fe2406bde258e94eee927519"
@@ -3305,6 +3343,10 @@ md5.js@^1.3.4:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+mdurl@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/mdurl/download/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4926,6 +4968,10 @@ typo-js@*:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/typo-js/download/typo-js-1.0.3.tgz#54d8ebc7949f1a7810908b6002c6841526c99d5a"
 
+uc.micro@^1.0.1, uc.micro@^1.0.3:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/uc.micro/download/uc.micro-1.0.5.tgz#0c65f15f815aa08b560a61ce8b4db7ffc3f45376"
+
 uglify-js@3.3.x:
   version "3.3.9"
   resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-3.3.9.tgz#33869666c8ab7f7658ce3d22f0f1ced40097d33a"
@@ -5063,6 +5109,16 @@ vm-browserify@0.0.4:
   resolved "http://registry.npm.taobao.org/vm-browserify/download/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
+
+vue-baidu-map@^0.20.7:
+  version "0.20.7"
+  resolved "http://registry.npm.taobao.org/vue-baidu-map/download/vue-baidu-map-0.20.7.tgz#71a46a8be982ba6db9ba75b878250c2521596b2d"
+  dependencies:
+    bmaplib.curveline "^1.0.0"
+    bmaplib.heatmap "^1.0.4"
+    bmaplib.lushu "^1.0.7"
+    bmaplib.markerclusterer "^1.0.13"
+    markdown-it "^8.4.0"
 
 vue-hot-reload-api@^2.0.11:
   version "2.2.4"

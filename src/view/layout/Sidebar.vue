@@ -112,6 +112,11 @@ export default {
           index: 'alertIndex',
           name: '异常报警',
         },
+        {
+          icon: 'el-icon-Group iconfont',
+          index: 'mapMonitor',
+          name: '地图',
+        },
       ]
     }
   },

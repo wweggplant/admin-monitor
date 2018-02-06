@@ -10,11 +10,11 @@ export default {
   },
   all (deviceType = '') {
     let device = session.get('device');
-    return device ? Promise.resolve([device]) : base.get('/device/getAll', {
+    return device ? Promise.resolve({data: device}) : base.get('/device/getAll', {
       params: {deviceType}
-    }).then(([data, config, response]) => {
-      session.set('device', data);
-      return [data, config, response];
+    }).then((config) => {
+      session.set('device', config.data);
+      return config;
     });
   },
   getDeviceFlowConfig (deviceCompany = '', deviceModel = '', deviceSize = '') {

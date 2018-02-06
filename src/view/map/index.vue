@@ -1,5 +1,5 @@
 <template >
-    <baidu-map ref="map" @zoomend='zoomMap' v-if='init' @load='mapInit' :scroll-wheel-zoom='true' :map-type='mapType'  :zoom='zoom'  class='bm-view'  :center='center' :style='{height:`${useHeight}px`}' ak='DuVMI92hBNjPHGkOL3PGK0k8kFg0eEEx'>
+    <baidu-map ref="map" @zoomend='zoomMap' v-if='init' @load='mapInit' :scroll-wheel-zoom='true' :map-type='mapType'  :zoom='zoom'  class='bm-view'  :center='center' :style='{height:`${baseOption.useHeight}px`}' ak='DuVMI92hBNjPHGkOL3PGK0k8kFg0eEEx'>
         <bm-view style='width: 100%; height:100%;'></bm-view>
         <bm-scale anchor='BMAP_ANCHOR_BOTTOM_RIGHT' :offset='{width:50,height:20}'></bm-scale>
         <bm-navigation :offset='{height:20}' anchor='BMAP_ANCHOR_BOTTOM_RIGHT' ></bm-navigation>
@@ -73,38 +73,23 @@
                 :top='marker.top'
                 :icon='iconMake(type)'
                 @click='markerClick(marker)'
-                v-if="type !=='dma'"
                 class='flex-box'
                 :key='`device${marker.deviceId}`'
                 :position='{lng: marker.longitude, lat: marker.latitude}'
               >
                 <bm-label title="Hover me" @click="openHistoryModelDaysOffset(marker.deviceId, marker.saveTimeNow, -1)" :labelStyle="{'border-color':'#fff'}"  v-if="marker.showTable" :content="tableDevice(marker,type)" :offset='{width: 30, height: 0}'/>
               </bm-marker>
-              <template v-else>
-                <bm-marker
-                    :top='marker.top'
-                    @click='markerClick(marker)'
-                    :icon='iconMake(type)'
-                    class='flex-box'
-                    :key='`dma${marker.dmaId}`'
-                    :position="{lng: marker.dmaCorePointLongitude, lat: marker.domCorePointLatitude}"
-                >
-                  <bm-label  :labelStyle="{'border-color':'#fff'}" v-if='marker.showTable' :content='tableDma(marker)' :offset='{width: 30, height: 0}'/>
-                </bm-marker>
-                <bm-polygon v-if="zoom > 16" fill-color="#ffffffb8" stroke-style="dashed" :fill-opacity="0" :path="marker.polygonPath" stroke-color="blue" :stroke-opacity="0.5" :stroke-weight="4" :editing="false"/>
-            </template>
           </template>
         </template>
     </baidu-map>
 </template>
 <script>
-import base from '@/extend/base';
+import base from '@/mixin/base';
 import {BaiduMap, BmMarker, BmLabel, BmView, BmOverlay, BmMapType, BmScale, BmNavigation, BmGeolocation, BmlMarkerClusterer, BmControl, BmPolygon} from 'vue-baidu-map'
-import dmaResource from '@/resource/dma';
 import realResource from '@/resource/real';
+import deviceRes from '@/resource/device';
 import commonLogic from '@/common/';
 import CONST from '@/const/device';
-import reportResource from '@/resource/report';
 
 // const MAP_MAX_LEVEL = 16;
 const MAP_MIN_LEVEL = 11;
@@ -122,7 +107,7 @@ const getSection = (maxLevel = 0) => {
 };
 
 export default {
-  extends: base,
+  mixins: [base],
   name: 'mapMonitor',
   data () {
     let Types = {};
@@ -131,8 +116,7 @@ export default {
       Types[t] = CONST.type[t].name;
       selectedDeviceType.push(t);
     }
-    let checkSelectList = [].concat(selectedDeviceType, ['dma']);
-    Types.dma = 'DMA';
+    let checkSelectList = [].concat(selectedDeviceType);
     return {
       init: false,
       initCenter: {},
@@ -171,7 +155,7 @@ export default {
           return (min <= zoom && max >= zoom) || max < zoom;
         });
       }
-      console.log(o.dma);
+      console.log(o);
       return o;
     },
     markerClick (marker) {
@@ -309,40 +293,20 @@ export default {
     },
     makeMarkers () {
       this.init = false;
+      const vm = this;
       /*
       let startDate = format(format(new Date(),'YYYY-MM-DD'));
       let endDate = format(moment(startDate).add(1,'d'));
       */
-      let startDate = '2017-11-12 00:00:00';
-      let endDate = '2017-11-14 00:00:00';
-      axios.all([ realResource.listAllType(),
-        dmaResource.getDMATree(),
-        reportResource.getDmaStatSum(startDate, endDate)
-      ]).then(([[reallist], [tree], [dmalist]]) => {
+      axios.all([realResource.listAllType(), deviceRes.all()]).then(([{data}]) => {
         let originMarkers = {};
         let dmaList = [];
         let maxLevel = 0;
-        for (let name of this.selectedDeviceType) {
-          originMarkers[name] = commonLogic.realDataHandle(reallist[name], () => {
+        vm.selectedDeviceType.forEach(name => {
+          originMarkers[name] = commonLogic.realDataHandle(data[name], () => {
             return {showTable: false}
           });
-        }
-        commonLogic.iterTree([tree], (item) => {
-          let d = dmalist[item.dmaId] || {};
-          if (item.dmaBorder) {
-            item.polygonPath = item.dmaBorder.split(';').map(m => {
-              const arr = m.split(',');
-              return {
-                lng: Number(arr[0]),
-                lat: Number(arr[1])
-              }
-            });
-          }
-          dmaList.push(Object.assign(d, item, {showTable: false}));
-          if (item.children && item.children.length > 0) {
-            maxLevel++;
-          }
-        });
+        })
         this.deepArr = getSection(maxLevel);
         originMarkers['dma'] = dmaList;
         this.originMarkers = originMarkers;

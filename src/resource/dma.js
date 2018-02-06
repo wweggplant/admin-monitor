@@ -1,7 +1,5 @@
 import {base} from './base';
-
 import session from '@/utils/session';
-import dmaResource from '@/resource/dma';
 
 const signCallBack = (message) => {
   if (message === 'success') {
@@ -13,9 +11,9 @@ const signCallBack = (message) => {
 export default {
   getDMATree () {
     let dmaTree = session.get('dmaTree');
-    return dmaTree ? Promise.resolve([dmaTree]) : dmaResource.getDmaById(1).then(([data, config, response]) => {
-      session.set('dmaTree', data);
-      return [data, config, response];
+    return dmaTree ? Promise.resolve({data: dmaTree}) : this.getDmaById(1).then(config => {
+      session.set('dmaTree', config.data);
+      return config;
     });
   },
   //  根据dmaId获取dma树
@@ -32,7 +30,7 @@ export default {
   },
   //  （3）更新dma静态属性
   updateDmaAttr (dma = {}) {
-    return base.post('/dmamanager/updateDmaAttr', dma).then(data => {
+    return base.post('/dmamanager/updateDmaAttr', dma).then(({data}) => {
       return signCallBack(data);
     });
   },
@@ -75,7 +73,7 @@ export default {
   updateDmaImgUrls (dmaId, urls) {
     return base.post('dmamanager/updateDmaImgUrls', {
       dmaId, urls
-    }).then(data => {
+    }).then(({data}) => {
       return signCallBack(data);
     })
   }

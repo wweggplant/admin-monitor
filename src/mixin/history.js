@@ -10,6 +10,7 @@ const getEchartDynamicValue = (chart, name, index) => {
 };
 
 export default {
+  mixins: [base],
   components: {Chart},
   data () {
     return {
@@ -45,7 +46,7 @@ export default {
       const data = {};
       this.historyChartClear();
       data[type] = deviceId.toString();
-      history.getHistoryByCondition(data, base.filters.format(dates[0]), base.filters.format(dates[1])).then(([data]) => {
+      history.getHistoryByCondition(data, base.filters.format(dates[0]), base.filters.format(dates[1])).then(({data}) => {
         const list = data[type][deviceId] || [];
         if (type === 'acc' || type === 'grp') {
           param.accumulative = list[list.length - 1].value - list[0].value;

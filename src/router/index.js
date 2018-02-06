@@ -17,11 +17,6 @@ export default new Router({
       children: [
         /*
         {
-          path: '/mapMonitor',
-          meta: {component: 'mapMonitor', name: '地图集成'},
-          component: resolve => require(['../components/page/realTimeMon/map.vue'], resolve)
-        },
-        {
           path: '/realTimeMonIndex',
           meta: {component: 'realTimeMonIndex', name: '测点实时数据'},
           component: resolve => require(['../components/page/realTimeMon/Index.vue'], resolve)
@@ -97,6 +92,11 @@ export default new Router({
           component: resolve => require(['@/components/page/device/index'], resolve)// vue-schart组件
         }
         */
+        {
+          path: '/mapMonitor',
+          meta: {component: 'mapMonitor', name: '地图集成'},
+          component: resolve => require(['@/view/map/index'], resolve)
+        },
         {
           path: '/listChart',
           meta: {component: 'listChart', name: '图表列表'},
