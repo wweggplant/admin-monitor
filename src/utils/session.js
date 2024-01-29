@@ -2,7 +2,6 @@
  * store.js 离线存储
  * @description 操作localStorage的数据
  * @module utils/store
- * @author:岳(liuyue@travelsky.com)
  */
 
 export default (function () {
